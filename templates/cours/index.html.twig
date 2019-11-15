@@ -1,344 +1,58 @@
-<!DOCTYPE html>
-<html>
-{% block stylesheet %} {{ encore_entry_link_tags('app') }}
+{% extends 'base.html.twig' %}
+{% block content%}
+   <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Home</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Home</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pdf Studies</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="icheck/skins/flat/blue.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="morris/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="jvector/jvector/jquery-jvectormap.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="datepicker/dist/css/bootstrap-datepicker3.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="daterangepicker/daterangepicker.css">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
-{% endblock %} {% block body %}
-
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ path ('home')}}" class="nav-link">Accueil</a>
-                </li>
-            </ul>
-
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Messages Dropdown Menu -->
-
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fa fa-envelope mr-2"></i> 4 nouveaux commentaires
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fa fa-users mr-2"></i> 8 étudiants inscrits
-                        </a>
-                        <div class="dropdown-divider"></div>
-
-                        <a href="#" class="dropdown-item dropdown-footer">Afficher Tous</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-            class="fa fa-th-large"></i></a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="{{ asset('images/AdminLTELogo.png') }}" alt="AdminLTE Logo" />
-                <span class="brand-text font-weight-light">PDF Studies</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img class="img-circle elevation-2" src="{{ asset('images/user2-160x160.jpg') }}" alt="User Image" />
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Administrateur</a>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <ul class="menu">
-                    <li>
-                        <input type="radio" name="menuopt" id="drop1" />
-                        <label class="opener" for="drop1">Gestion des cours</label>
-                        <label class="closer" for="dropclose">Gestion des cours</label>
-                        <ul>
-                            <li><a href=" {{ path ('cours')}}">Ajouter un Cours</a></li>
-                            <li> <a href=" {{ path ('listcours')}}">Liste des Cours</a></li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <input type="radio" name="menuopt" id="drop2" />
-                        <label class="opener" for="drop2">Gestion des filieres</label>
-                        <label class="closer" for="dropclose">Gestion des filieres</label>
-                        <ul>
-                            <li class="nav-item">
-                                <a href=" {{ path ('filiere')}}" class="nav-link">Ajouter Filère</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href=" {{ path ('listefiliere')}}" class="nav-link">Liste Filère</a>
-                            </li>
-                        </ul>
-                        <input type="radio" name="menuopt" id="dropclose" />
-                    </li>
-
-                    <li>
-                        <input type="radio" name="menuopt" id="drop3" />
-                        <label class="opener" for="drop3"><p>Gestion Niveau<i class="fa fa-angle-left right"></i></p></label>
-                        <label class="closer" for="dropclose"><p>Gestion Niveau<i class="fa fa-angle-left right"></i></p></label>
-                        <ul>
-                            <li class="nav-item">
-                                <a href=" {{ path ('niveau')}}" class="nav-link">Ajouter Niveau</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href=" {{ path ('listeniveau')}}" class="nav-link">Liste Niveau</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <input type="radio" name="menuopt" id="drop4" />
-                        <label class="opener" for="drop4">Gestion des Universites</label>
-                        <label class="closer" for="dropclose">Gestion des Universites</label>
-                        <ul>
-                            <li class="nav-item">
-                                <a href=" {{ path ('universite')}}" class="nav-link">Enregistrer un abonnement</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href=" {{ path ('listeuniversite')}}" class="nav-link">Liste des abonnements</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <input type="radio" name="menuopt" id="drop5" />
-                        <label class="opener" for="drop5">Gestion des Abonnements</label>
-                        <label class="closer" for="dropclose">Gestion des Abonnements</label>
-                        <ul>
-                            <li class="nav-item">
-                                <a href=" {{ path ('abonnement')}}" class="nav-link">Enregistrer un abonnements</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href=" {{ path ('listeabonnement')}}" class="nav-link">Liste des abonnements</a>
-                            </li>
-                        </ul>
-
-                    </li>
-                </ul>
-
-
-                <style>
-                    .menu ul,
-                    .menu input,
-                    .menu .closer,
-                    .menu input:checked~.opener {
-                        display: none;
-                    }
-                    
-                    .menu input:checked~ul,
-                    .menu input:checked~.closer {
-                        display: block;
-                    }
-                    
-                    .menu li {
-                        color: white;
-                        list-style: none;
-                    }
-                    
-                    label:hover {
-                        border: 1px solid 34a40;
-                        background-color: white;
-                        color: black;
-                        padding: 5px;
-                    }
-                </style>
-                </nav>
-                <!-- /.sidebar-menu -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="callout callout-info">
+              <h5><i class="fas fa-info"></i> Note:</h5>
+              Bienvenue sur la page d'accueil.
             </div>
-            <!-- /.sidebar -->
-        </aside>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Tableau de Bord</h1>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                                <li class="breadcrumb-item active"></li>
-                            </ol>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
 
             <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <!-- Small boxes (Stat box) -->
-                    <div class="row">
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>150</h3>
+            <div class="invoice p-3 mb-3">
+              <!-- title row -->
+            
 
-                                    <p>New Orders</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-bag"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <!-- /.row -->
 
-                                    <p>Bounce Rate</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3>44</h3>
+              <!-- Table row -->
+              
+              <!-- /.row -->
 
-                                    <p>Etudiants Inscrits</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-add"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3>43</h3>
+            
+                <!-- accepted payments column -->
+            
+                <!-- /.col -->
+               
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
 
-                                    <p>Etudiants en règle</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-pie-graph"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {% block content %} {% endblock %}
-            </section>
-
+              <!-- this row will not appear when printing -->
+              
             </div>
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
 
-            <footer class="main-footer">
-                <strong>Copyright &copy; 2019<a href="http://nolimitnewtech.com">Nolimit New Technology</a>.</strong> All rights reserved.
-            </footer>
-
-            {% block javascript %} {{ encore_entry_script_tags('app') }}
-            <!-- jQuery -->
-            <script src="plugins/jquery/jquery.min.js"></script>
-            <!-- jQuery UI 1.11.4 -->
-            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-            <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-            <script>
-                $.widget.bridge('uibutton', $.ui.button)
-            </script>
-            <!-- Bootstrap 4 -->
-            <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-            <!-- Morris.js charts -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-            <script src="morris/morris.min.j"></script>
-            <!-- Sparkline -->
-            <script src="jquery.sparkline/dist/jquery.sparkline.min.js"></script>
-            <!-- jvectormap -->
-            <script src="jvector/jvector/jquery-jvectormap.js"></script>
-            <script src="jvector/jvector/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
-            <!-- jQuery Knob Chart -->
-            <script src="jQuery-Knob/js/jquery.knob.js"></script>
-            <!-- daterangepicker -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-            <script src="daterangepicker/daterangepicker.js"></script>
-            <!-- datepicker -->
-            <script src="datepicker/dist/js/bootstrap-datepicker.js"></script>
-            <!-- Bootstrap WYSIHTML5 -->
-            <script src="bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js"></script>
-            <!-- Slimscroll -->
-            <script src="jQuery-slimScroll/jquery.slimscroll.min.js"></script>
-            <!-- FastClick -->
-            <script src="plugins/fastclick/fastclick.js"></script>
-            <!-- AdminLTE App -->
-            <script src="dist/js/adminlte.js"></script>
-            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-            <script src="dist/js/pages/dashboard.js"></script>
-            <!-- AdminLTE for demo purposes -->
-            <script src="dist/js/demo.js"></script>
-            {% endblock %}
-</body>
-{% endblock %}
-
-</html>
+    {% endblock %}
