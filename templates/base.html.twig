@@ -1,14 +1,265 @@
 <!DOCTYPE html>
 <html>
+{% block stylesheet %} {{ encore_entry_link_tags('app') }}
 
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pdf Studies</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="icheck/skins/flat/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="jvector/jvector/jquery-jvectormap.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="datepicker/dist/css/bootstrap-datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+{% endblock %} {% block body %}
 
-<body>
-    {% block body %}{% endblock %} {% block javascripts %}{% endblock %}
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link">
+                <img src="{{ asset('images/AdminLTELogo.png') }}" alt="AdminLTE Logo" />
+                <span class="brand-text font-weight-light">PDF Studies</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img class="img-circle elevation-2" src="{{ asset('images/user2-160x160.jpg') }}" alt="User Image" />
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Administrateur</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <div class="home">
+                    <li>
+                        <a href="{{ path('home')}}" class="nav-link active">Tableau de Bord</a>
+
+                    </li>
+                </div>
+
+                <ul class="menu">
+                    <li>
+                        <input type="radio" name="menuopt" id="drop1" />
+                        <label class="opener" for="drop1"><i class="nav-icon fa fa-edit"></i>Gestion des cours<i class="right fa fa-angle-left"></i> </label>
+                        <label class="closer" for="dropclose"><i class="nav-icon fa fa-edit"></i>Gestion des cours<i class="right fa fa-angle-left"></i></label>
+                        <ul>
+                            <li>
+                                <a href=" {{ path ('cours')}}"><i class="fa fa-circle-o nav-icon"></i>Ajouter un Cours</a>
+                            </li>
+                            <li>
+                                <a href=" {{ path ('listcours')}}"><i class="fa fa-circle-o nav-icon"></i>Liste des Cours</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="radio" name="menuopt" id="drop2" />
+                        <label class="opener" for="drop2"><i class="nav-icon fa fa-edit"></i>Gestion des filieres<i class="fa fa-angle-left right"></i></label>
+                        <label class="closer" for="dropclose"><i class="nav-icon fa fa-edit"></i>Gestion des filieres<i class="fa fa-angle-left right"></i></label>
+                        <ul>
+                            <li class="nav-item">
+                                <a href=" {{ path ('filiere')}}" class="nav-link"><i class="fa fa-circle-o nav-icon"></i>Ajouter Filère</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=" {{ path ('listefiliere')}}" class="nav-link"><i class="fa fa-circle-o nav-icon"></i>Liste Filère</a>
+                            </li>
+                        </ul>
+                        <input type="radio" name="menuopt" id="dropclose" />
+                    </li>
+
+                    <li>
+                        <input type="radio" name="menuopt" id="drop3" />
+                        <label class="opener" for="drop3"><p> <i class="nav-icon fa fa-table"></i>Gestion Niveau <i class="fa fa-angle-left right"></i></p></label>
+                        <label class="closer" for="dropclose"><p><i class="nav-icon fa fa-table"></i>Gestion Niveau <i class="fa fa-angle-left right"></i></p></label>
+                        <ul>
+                            <li class="nav-item">
+                                <a href=" {{ path ('niveau')}}" class="nav-link"><i class="fa fa-circle-o nav-icon"></i>Ajouter Niveau</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=" {{ path ('listeniveau')}}" class="nav-link"><i class="fa fa-circle-o nav-icon"></i>Liste Niveau</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="radio" name="menuopt" id="drop4" />
+                        <label class="opener" for="drop4"><i class="nav-icon fa fa-table"></i>Gestion des Universites <i class="fa fa-angle-left right"></i></label>
+                        <label class="closer" for="dropclose"><i class="nav-icon fa fa-table"></i>Gestion des Universites <i class="fa fa-angle-left right"></i></label>
+                        <ul>
+                            <li class="nav-item">
+                                <a href=" {{ path ('universite')}}" class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>Ajouter un Universite</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=" {{ path ('listeuniversite')}}" class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>Liste des Universites</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="radio" name="menuopt" id="drop5" />
+                        <label class="opener" for="drop5"><i class="nav-icon fa fa-table"></i>Gestion des Abonnements <i class="fa fa-angle-left right"></i></label>
+                        <label class="closer" for="dropclose"><i class="nav-icon fa fa-table"></i>Gestion des Abonnements  <i class="fa fa-angle-left right"></i></label>
+                        <ul>
+                            <li class="nav-item">
+                                <a href=" {{ path ('abonnement')}}" class="nav-link"><i class="fa fa-circle-o nav-icon"></i>Enregistrer un abonnement</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=" {{ path ('listeabonnement')}}" class="nav-link"><i class="fa fa-circle-o nav-icon"></i>Liste des abonnements</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+
+                <style>
+                    .menu ul,
+                    .menu input,
+                    .menu .closer,
+                    .menu input:checked~.opener {
+                        display: none;
+                    }
+                    
+                    .menu input:checked~ul,
+                    .menu input:checked~.closer {
+                        display: block;
+                    }
+                    
+                    .menu li {
+                        color: white;
+                        list-style: none;
+                    }
+                    
+                    label:hover {
+                        border: 1px solid 34a40;
+                        background-color: white;
+                        color: black;
+                        padding: 5px;
+                    }
+                    
+                    .home {
+                        border: 1px solid;
+                        border-radius: 8px;
+                        background-color: 007bff;
+                        color: white;
+                        margin-bottom: 5%;
+                    }
+                </style>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <!-- /.col -->
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+
+                        </div>
+                        <!-- ./col -->
+
+                        <!-- ./col -->
+
+                    </div>
+                    <!-- ./col -->
+
+                </div>
+                {% block content %} {% endblock %}
+                <!-- /.content-wrapper -->
+
+
+                <!-- Control Sidebar -->
+                <aside class="control-sidebar control-sidebar-dark">
+                    <!-- Control sidebar content goes here -->
+                </aside>
+                <!-- /.control-sidebar -->
+        </div>
+        </section>
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2019<a href="http://nolimitnewtech.com">Nolimit New Technology</a>.</strong> All rights reserved.
+        </footer>
+        <!-- ./wrapper -->
+        {% block javascript %} {{ encore_entry_script_tags('app') }}
+        <!-- jQuery -->
+        <script src="plugins/jquery/jquery.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+            $.widget.bridge('uibutton', $.ui.button)
+        </script>
+        <!-- Bootstrap 4 -->
+        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Morris.js charts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="morris/morris.min.j"></script>
+        <!-- Sparkline -->
+        <script src="jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+        <!-- jvectormap -->
+        <script src="jvector/jvector/jquery-jvectormap.js"></script>
+        <script src="jvector/jvector/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="jQuery-Knob/js/jquery.knob.js"></script>
+        <!-- daterangepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+        <script src="daterangepicker/daterangepicker.js"></script>
+        <!-- datepicker -->
+        <script src="datepicker/dist/js/bootstrap-datepicker.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js"></script>
+        <!-- Slimscroll -->
+        <script src="jQuery-slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="plugins/fastclick/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="dist/js/adminlte.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="dist/js/pages/dashboard.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="dist/js/demo.js"></script>
+        {% endblock %}
 </body>
+{% endblock %}
 
 </html>

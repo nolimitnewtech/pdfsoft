@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-{% block stylesheet %}
+{% block stylesheet %} {{ encore_entry_link_tags('app') }}
 
 <head>
     <meta charset="utf-8">
@@ -15,17 +15,17 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="icheck/skins/flat/blue.css">
     <!-- Morris chart -->
-    <link rel="stylesheet" href="plugins/morris/morris.css">
+    <link rel="stylesheet" href="morris/morris.css">
     <!-- jvectormap -->
-    <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <link rel="stylesheet" href="jvector/jvector/jquery-jvectormap.css">
     <!-- Date Picker -->
-    <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href="datepicker/dist/css/bootstrap-datepicker3.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" href="daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -42,7 +42,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Accueil</a>
+                    <a href="{{ path ('home')}}" class="nav-link">Accueil</a>
                 </li>
             </ul>
 
@@ -84,7 +84,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{ asset('images/AdminLTELogo.png') }}" alt="AdminLTE Logo" />
                 <span class="brand-text font-weight-light">PDF Studies</span>
             </a>
 
@@ -93,7 +93,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img class="img-circle elevation-2" src="{{ asset('images/user2-160x160.jpg') }}" alt="User Image" />
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Administrateur</a>
@@ -101,137 +101,100 @@
                 </div>
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="{{ path ('home')}}" class="nav-link active">
-                                <i class="nav-icon fa fa-dashboard"></i>
-                                <p>
-                                    Tableau de Bord
-                                </p>
-                            </a>
+                <ul class="menu">
+                    <li>
+                        <input type="radio" name="menuopt" id="drop1" />
+                        <label class="opener" for="drop1">Gestion des cours</label>
+                        <label class="closer" for="dropclose">Gestion des cours</label>
+                        <ul>
+                            <li><a href=" {{ path ('cours')}}">Ajouter un Cours</a></li>
+                            <li> <a href=" {{ path ('listcours')}}">Liste des Cours</a></li>
 
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="ion ion-clipboard nav-icon"></i>
-                                <p>
-                                    Gestion des Cours
-                                    <i class="right fa fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href=" {{ path ('cours')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Ajouter un Cours</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href=" {{ path ('listcours')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Liste des Cours</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="ion ion-clipboard nav-icon"></i>
-                                <p>
-                                    Gestion Université
-                                    <i class="fa fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href=" {{ path ('universite')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Ajouter Université</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href=" {{ path ('listeuniversite')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Liste Université</p>
-                                    </a>
-                                </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="radio" name="menuopt" id="drop2" />
+                        <label class="opener" for="drop2">Gestion des filieres</label>
+                        <label class="closer" for="dropclose">Gestion des filieres</label>
+                        <ul>
+                            <li class="nav-item">
+                                <a href=" {{ path ('filiere')}}" class="nav-link">Ajouter Filère</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=" {{ path ('listefiliere')}}" class="nav-link">Liste Filère</a>
+                            </li>
+                        </ul>
+                        <input type="radio" name="menuopt" id="dropclose" />
+                    </li>
 
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-edit"></i>
-                                <p>
-                                    Gestion Filère
-                                    <i class="fa fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href=" {{ path ('filiere')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Ajouter Filère</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href=" {{ path ('listefiliere')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Liste Filère</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-table"></i>
-                                <p>
-                                    Gestion Niveau
-                                    <i class="fa fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href=" {{ path ('niveau')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Ajouter Niveau</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ path ('listeniveau')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Liste Niveau</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-table"></i>
-                                <p>
-                                    Gestion Abonnement
-                                    <i class="fa fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href=" {{ path ('abonnement')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Ajouter Abonnement</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ path ('listeabonnement')}}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Liste Abonnement</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    <li>
+                        <input type="radio" name="menuopt" id="drop3" />
+                        <label class="opener" for="drop3"><p>Gestion Niveau<i class="fa fa-angle-left right"></i></p></label>
+                        <label class="closer" for="dropclose"><p>Gestion Niveau<i class="fa fa-angle-left right"></i></p></label>
+                        <ul>
+                            <li class="nav-item">
+                                <a href=" {{ path ('niveau')}}" class="nav-link">Ajouter Niveau</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=" {{ path ('listeniveau')}}" class="nav-link">Liste Niveau</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="radio" name="menuopt" id="drop4" />
+                        <label class="opener" for="drop4">Gestion des Universites</label>
+                        <label class="closer" for="dropclose">Gestion des Universites</label>
+                        <ul>
+                            <li class="nav-item">
+                                <a href=" {{ path ('universite')}}" class="nav-link">Enregistrer un abonnement</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=" {{ path ('listeuniversite')}}" class="nav-link">Liste des abonnements</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="radio" name="menuopt" id="drop5" />
+                        <label class="opener" for="drop5">Gestion des Abonnements</label>
+                        <label class="closer" for="dropclose">Gestion des Abonnements</label>
+                        <ul>
+                            <li class="nav-item">
+                                <a href=" {{ path ('abonnement')}}" class="nav-link">Enregistrer un abonnements</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=" {{ path ('listeabonnement')}}" class="nav-link">Liste des abonnements</a>
+                            </li>
+                        </ul>
 
-                    </ul>
+                    </li>
+                </ul>
+
+
+                <style>
+                    .menu ul,
+                    .menu input,
+                    .menu .closer,
+                    .menu input:checked~.opener {
+                        display: none;
+                    }
+                    
+                    .menu input:checked~ul,
+                    .menu input:checked~.closer {
+                        display: block;
+                    }
+                    
+                    .menu li {
+                        color: white;
+                        list-style: none;
+                    }
+                    
+                    label:hover {
+                        border: 1px solid 34a40;
+                        background-color: white;
+                        color: black;
+                        padding: 5px;
+                    }
+                </style>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -328,57 +291,53 @@
                         </div>
                     </div>
                     {% block content %} {% endblock %}
-                    <!-- /.content-wrapper -->
-                    <footer class="main-footer">
-                        <strong>Copyright &copy; 2019<a href="http://nolimitnewtech.com">Nolimit New Technology</a>.</strong> All rights reserved.
-                    </footer>
+            </section>
 
-                    <!-- Control Sidebar -->
-                    <aside class="control-sidebar control-sidebar-dark">
-                        <!-- Control sidebar content goes here -->
-                    </aside>
-                    <!-- /.control-sidebar -->
-                </div>
-                <!-- ./wrapper -->
-                {% block javascript %}
-                <!-- jQuery -->
-                <script src="plugins/jquery/jquery.min.js"></script>
-                <!-- jQuery UI 1.11.4 -->
-                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-                <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-                <script>
-                    $.widget.bridge('uibutton', $.ui.button)
-                </script>
-                <!-- Bootstrap 4 -->
-                <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-                <!-- Morris.js charts -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-                <script src="plugins/morris/morris.min.js"></script>
-                <!-- Sparkline -->
-                <script src="plugins/sparkline/jquery.sparkline.min.js"></script>
-                <!-- jvectormap -->
-                <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-                <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-                <!-- jQuery Knob Chart -->
-                <script src="plugins/knob/jquery.knob.js"></script>
-                <!-- daterangepicker -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-                <script src="plugins/daterangepicker/daterangepicker.js"></script>
-                <!-- datepicker -->
-                <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-                <!-- Bootstrap WYSIHTML5 -->
-                <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-                <!-- Slimscroll -->
-                <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-                <!-- FastClick -->
-                <script src="plugins/fastclick/fastclick.js"></script>
-                <!-- AdminLTE App -->
-                <script src="dist/js/adminlte.js"></script>
-                <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-                <script src="dist/js/pages/dashboard.js"></script>
-                <!-- AdminLTE for demo purposes -->
-                <script src="dist/js/demo.js"></script>
-                {% endblock %}
+            </div>
+
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2019<a href="http://nolimitnewtech.com">Nolimit New Technology</a>.</strong> All rights reserved.
+            </footer>
+
+            {% block javascript %} {{ encore_entry_script_tags('app') }}
+            <!-- jQuery -->
+            <script src="plugins/jquery/jquery.min.js"></script>
+            <!-- jQuery UI 1.11.4 -->
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+            <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+            <script>
+                $.widget.bridge('uibutton', $.ui.button)
+            </script>
+            <!-- Bootstrap 4 -->
+            <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Morris.js charts -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+            <script src="morris/morris.min.j"></script>
+            <!-- Sparkline -->
+            <script src="jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+            <!-- jvectormap -->
+            <script src="jvector/jvector/jquery-jvectormap.js"></script>
+            <script src="jvector/jvector/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
+            <!-- jQuery Knob Chart -->
+            <script src="jQuery-Knob/js/jquery.knob.js"></script>
+            <!-- daterangepicker -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+            <script src="daterangepicker/daterangepicker.js"></script>
+            <!-- datepicker -->
+            <script src="datepicker/dist/js/bootstrap-datepicker.js"></script>
+            <!-- Bootstrap WYSIHTML5 -->
+            <script src="bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js"></script>
+            <!-- Slimscroll -->
+            <script src="jQuery-slimScroll/jquery.slimscroll.min.js"></script>
+            <!-- FastClick -->
+            <script src="plugins/fastclick/fastclick.js"></script>
+            <!-- AdminLTE App -->
+            <script src="dist/js/adminlte.js"></script>
+            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+            <script src="dist/js/pages/dashboard.js"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="dist/js/demo.js"></script>
+            {% endblock %}
 </body>
 {% endblock %}
 

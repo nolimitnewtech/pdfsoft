@@ -1,0 +1,106 @@
+<ul class="menu">
+    <li>
+        <input type="radio" name="menuopt" id="drop1" />
+        <label class="opener" for="drop1">Gestion des cours</label>
+        <label class="closer" for="dropclose">Gestion des cours</label>
+        <ul>
+            <li><a href=" {{ path ('cours')}}">Ajouter un Cours</a></li>
+            <li> <a href=" {{ path ('listcours')}}">Liste des Cours</a></li>
+
+        </ul>
+    </li>
+    <li>
+        <input type="radio" name="menuopt" id="drop2" />
+        <label class="opener" for="drop2">Gestion des filieres</label>
+        <label class="closer" for="dropclose">Gestion des filieres</label>
+        <ul>
+            <li class="nav-item">
+                <a href=" {{ path ('filiere')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Ajouter Filère</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href=" {{ path ('listefiliere')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Liste Filère</p>
+                </a>
+            </li>
+        </ul>
+        <input type="radio" name="menuopt" id="dropclose" />
+    </li>
+
+    <li>
+        <input type="radio" name="menuopt" id="drop3" />
+        <label class="opener" for="drop3"><p>Gestion Niveau<i class="fa fa-angle-left right"></i></p></label>
+        <label class="closer" for="dropclose"><p>Gestion Niveau<i class="fa fa-angle-left right"></i></p></label>
+        <ul>
+            <li class="nav-item">
+                <a href=" {{ path ('niveau')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Ajouter Niveau</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href=" {{ path ('listeniveau')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Liste Niveau</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <input type="radio" name="menuopt" id="drop4" />
+        <label class="opener" for="drop4">Gestion des Universites</label>
+        <label class="closer" for="dropclose">Gestion des Universites</label>
+        <ul>
+            <li class="nav-item">
+                <a href=" {{ path ('universite')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Enregistrer un abonnement</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href=" {{ path ('listeuniversite')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Liste des abonnements</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <input type="radio" name="menuopt" id="drop5" />
+        <label class="opener" for="drop5">Gestion des Abonnements</label>
+        <label class="closer" for="dropclose">Gestion des Abonnements</label>
+        <ul>
+            <li class="nav-item">
+                <a href=" {{ path ('abonnement')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Enregistrer un abonnement</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href=" {{ path ('listeabonnement')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Liste des abonnements</p>
+                </a>
+            </li>
+        </ul>
+
+    </li>
+</ul>
+
+
+<style>
+    .menu ul,
+    .menu input,
+    .menu .closer,
+    .menu input:checked~.opener {
+        display: none;
+    }
+    
+    .menu input:checked~ul,
+    .menu input:checked~.closer {
+        display: block;
+    }
+</style>
