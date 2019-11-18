@@ -29,7 +29,28 @@
             <!-- Main content -->
             <div class="invoice p-3 mb-3">
               <!-- title row -->
-            
+                     <h2>{{ lesfilieres|length }} Filieres</b></h2>
+            <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>CODE</th>
+                      <th>Nom complet</th>
+                      <th>#</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   {% for filiere in lesfilieres %}
+                    <tr>
+                      <td>{{ filiere.id }}</td>
+                      <td>{{ filiere.designation }}</td>
+                       <td>{{ filiere.nom }}</td>
+                       <td> <a href="{{ path('modifierfiliere',{id:filiere.id}) }}">Edit </a> &nbsp; &nbsp; <a href="{{ path('supprimerfiliere',{id:filiere.id}) }}">Delete</a> </td>
+                    </tr> 
+                  {% endfor %}
+                  </tbody>
+                </table>     
+          
 
               <!-- /.row -->
 

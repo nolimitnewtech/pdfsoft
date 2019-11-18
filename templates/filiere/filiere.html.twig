@@ -30,7 +30,10 @@
             <div class="invoice p-3 mb-3">
               <!-- title row -->
             
-
+  <span>{{ message }}</span>
+            {{ form_start(form) }}
+              {{ form_widget(form) }}
+              {{ form_end(form) }}
               <!-- /.row -->
 
               <!-- Table row -->

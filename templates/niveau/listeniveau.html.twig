@@ -29,7 +29,25 @@
             <!-- Main content -->
             <div class="invoice p-3 mb-3">
               <!-- title row -->
-            
+                   <h2>{{ lesniveaux|length }} Niveaux</b></h2>
+            <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nom</th>
+                      <th>#</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   {% for niveau in lesniveaux %}
+                    <tr>
+                      <td>{{ niveau.id }}</td>
+                      <td>{{ niveau.nom }}</td>
+                       <td> <a href="{{ path('modifierniveau',{id:niveau.id}) }}">Edit </a> &nbsp; &nbsp; <a href="{{ path('supprimerniveau',{id:niveau.id}) }}">Delete</a> </td>
+                    </tr> 
+                  {% endfor %}
+                  </tbody>
+                </table>     
 
               <!-- /.row -->
 

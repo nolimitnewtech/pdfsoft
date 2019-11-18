@@ -29,7 +29,34 @@
             <!-- Main content -->
             <div class="invoice p-3 mb-3">
               <!-- title row -->
-            
+                        <h2>{{ cours|length }} Cours</b></h2>
+            <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Date</th>
+                      <th>Titre</th>
+                      <th>Niveau</th>
+                     <th>Filiere</th>
+                      <th>Telecharger</th>
+                      <th>#</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   {% for cour in cours %}
+                    <tr>
+                      <td>{{ cour.id }}</td>
+                       <td>{{ cour.titre }}</td>
+                      <td>{{ cour.titre }}</td>
+                       <td>{{ cour.niveau.nom }}</td>
+                        <td>{{ cour.filiere.nom }}</td>
+                         <td><a href="{{ path('download_file',{lien:cour.lien})}}">Telecharger</a>
+                         </td>
+                         <td><a href="{{ path('modifiercours',{id:cour.id}) }}">Modifier</a>&nbsp;&nbsp;<a href="{{ path('modifierfichier',{id:cour.id}) }}">Changer fichier</a>&nbsp;&nbsp;<a href="{{ path('supprimercours',{id:cour.id}) }}">supprimer</a></td>
+                      </tr> 
+                  {% endfor %}
+                  </tbody>
+                </table>
 
               <!-- /.row -->
 

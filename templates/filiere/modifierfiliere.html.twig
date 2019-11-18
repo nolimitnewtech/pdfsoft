@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block content%}
+   <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Modifier Filieres</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Filieres</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="callout callout-info">
+              <h5><i class="fas fa-info"></i> Note:</h5>
+              Gestion des Filieres.
+            </div>
+
+
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3">
+              <!-- title row -->
+            
+  <span>{{ message }}</span>
+            {{ form_start(form) }}
+              {{ form_widget(form) }}
+              {{ form_end(form) }}
+              <!-- /.row -->
+
+              <!-- Table row -->
+              
+              <!-- /.row -->
+
+            
+                <!-- accepted payments column -->
+            
+                <!-- /.col -->
+               
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <!-- this row will not appear when printing -->
+              
+            </div>
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+    {% endblock %}

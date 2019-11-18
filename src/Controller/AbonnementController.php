@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AbonnementController extends AbstractController
 {
     /**
-     * @Route("/abonnement", name="abonnement")
+     * @Route("/admin/abonnement", name="abonnement")
      */
     public function abonnement()
     {
