@@ -9,7 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LoginController extends AbstractController
 {
     /**
-     * @Route("/login", name="login")
+     * @Route("/secure/login", name="login")
      */
     public function index(AuthenticationUtils $authenticationUtils)
     {
@@ -25,17 +25,16 @@ class LoginController extends AbstractController
         ]);
     }
 
-    
 
     /**
-     * @Route("/login-check", name="login_check")
+     * @Route("/secure/login-check", name="login_check")
      */    
-    public function login_check(){
+    public function login_check(AuthenticationUtils $authenticationUtils){
                 // retrouver une erreur d'authentification s'il y en a une
                 $error = $authenticationUtils->getLastAuthenticationError();
+
                 // retrouver le dernier identifiant de connexion utilisé
                 $lastUsername = $authenticationUtils->getLastUsername();
-              
 
         return $this->render('login/index.html.twig', [
             'last_username' => $lastUsername,
@@ -44,7 +43,28 @@ class LoginController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="security_logout")
+     * @Route("/account", name="account")
+     */    
+    public function account(){
+  
+
+    // redirection
+    $user = $this->getUser();
+    $role = $user->getRoles()[0];
+    if($role == "ROLE_ADMIN"){
+        return $this->redirectToRoute('tableaubord');
+    }
+
+    if($role == "ROLE_USER"){
+        return $this->redirectToRoute('student');
+    }
+
+    return $this->render('login/account.html.twig', [
+    ]);
+    }
+
+    /**
+     * @Route("/admin/logout", name="security_logout")
      */
     public function logout(): void
     {

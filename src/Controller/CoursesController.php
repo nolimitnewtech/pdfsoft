@@ -18,7 +18,7 @@ class CoursesController extends AbstractController
 {
 
 /**
-     * @Route("/admin/home", name="home")
+     * @Route("/admin/home", name="tableaubord")
      */
     public function index()
     {

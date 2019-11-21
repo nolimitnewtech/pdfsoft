@@ -1,0 +1,90 @@
+  {% extends 'basestudent.html.twig' %}
+{% block content%}
+   <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Votre Profil</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Cours</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="callout callout-info">
+              <h5><i class="fas fa-info"></i> Note:</h5>
+             Cours.
+            </div>
+
+
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3">
+            <span>{{ message }}</span>
+            <form method="Post" action="">
+
+       <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" name="nom"  value="{{ user.nom }}"/>
+                        
+        </div>
+        <div class="form-group">
+                        <label>Prenom</label>
+                        <input type="text" name="prenom" value="{{ user.prenom }}"/>
+                        
+        </div>
+        <div class="form-group">
+                        <label>Téléphone</label>
+                       <input type="text" name="telephone" value="{{ user.telephone }}"/>
+                        
+        </div>
+
+       <div class="form-group">
+                        <label>Universite</label>
+                        <select class="custom-select" required="" name="universite">
+                        <option></option>
+                        {% for universite in universites %}
+                          <option value="{{ universite.id }}" {% if student.universite.id == universite.id %} selected="selected" {% endif %}>{{ universite.nom }}</option>
+                        {% endfor %}
+                        </select>
+        </div>
+        <div class="form-group">
+                        <label>Filiere</label>
+                        <select class="custom-select" name="filiere">
+                         <option></option>
+                        {% for filiere in filieres %}
+                          <option value="{{ filiere.id }}" {% if student.filiere.id == filiere.id %} selected="selected" {% endif %}>{{ filiere.nom }}</option>
+                        {% endfor %}
+                        </select>
+        </div>
+
+        <div class="form-group">
+                        <label>Niveau</label>
+                        <select class="custom-select" name="niveau">
+                         <option></option>
+                        {% for niveau in niveaux %}
+                          <option value="{{ niveau.id }}" {% if student.niveau.id == niveau.id %} selected="selected" {% endif %}>{{ niveau.nom }}</option>
+                        {% endfor %}
+                        </select>
+        </div>         
+        <div class="form-group">
+         <input type="submit" name="valider" value="Modifier" />            
+        </div>  
+                     <div><a href="{{ path('changermotpasse') }}">Changer mot de passe</a> </div>
+             </form>
+            </div>
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+    {% endblock %}
