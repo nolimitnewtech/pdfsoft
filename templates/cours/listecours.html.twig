@@ -1,85 +1,89 @@
-{% extends 'base.html.twig' %}
-{% block content%}
-   <section class="content-header">
-      <div class="container-fluid">
+{% extends 'base.html.twig' %} {% block content%}
+<section class="content-header">
+    <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Liste des cours</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Liste de cours</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="callout callout-info">
-              <h5><i class="fas fa-info"></i> Note:</h5>
-              Liste de cours.
+            <div class="col-sm-6">
+                <h1>Liste des cours <span style="margin-left: 10%;"> <a class="btn btn-info" style="color: white;" href="{{ path ('cours')}}"> Ajouter un cour </a></span></h1>
             </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Liste de cours</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
 
 
-            <!-- Main content -->
-            <div class="invoice p-3 mb-3">
-              <!-- title row -->
-                        <h2>{{ cours|length }} Cours</b></h2>
-            <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Date</th>
-                      <th>Titre</th>
-                      <th>Niveau</th>
-                     <th>Filiere</th>
-                      <th>Telecharger</th>
-                      <th>#</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                   {% for cour in cours %}
-                    <tr>
-                      <td>{{ cour.id }}</td>
-                       <td>{{ cour.titre }}</td>
-                      <td>{{ cour.titre }}</td>
-                       <td>{{ cour.niveau.nom }}</td>
-                        <td>{{ cour.filiere.nom }}</td>
-                         <td><a href="{{ path('download_file',{lien:cour.lien})}}">Telecharger</a>
-                         </td>
-                         <td><a href="{{ path('modifiercours',{id:cour.id}) }}">Modifier</a>&nbsp;&nbsp;<a href="{{ path('modifierfichier',{id:cour.id}) }}">Changer fichier</a>&nbsp;&nbsp;<a href="{{ path('supprimercours',{id:cour.id}) }}">supprimer</a></td>
-                      </tr> 
-                  {% endfor %}
-                  </tbody>
-                </table>
 
-              <!-- /.row -->
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3">
+                    <!-- title row -->
+                    <h2>{{ cours|length }} Cours</b>
+                    </h2>
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Titre</th>
+                                <th scope="col">Niveau</th>
+                                <th scope="col">Filiere</th>
+                                <th scope="col">Telecharger</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cour in cours %}
+                            <tr scope="row">
+                                <td>{{ cour.id }}</td>
+                                <td>{{ cour.titre }}</td>
+                                <td>{{ cour.titre }}</td>
+                                <td>{{ cour.niveau.nom }}</td>
+                                <td>{{ cour.filiere.nom }}</td>
+                                <td><a href="{{ path('download_file',{lien:cour.lien})}}"><button class="btn btn-primary"><i class="fas fa-download"></i></button></a>
+                                </td>
+                                <td><a class="btn btn-success" href="{{ path('modifiercours',{id:cour.id}) }}"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;<a class="btn btn-primary" href="{{ path('modifierfichier',{id:cour.id}) }}"><i class="fas fa-file"></i></a>&nbsp;&nbsp;
+                                    <a class="btn btn-danger" href="{{ path('supprimercours',{id:cour.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
 
-              <!-- Table row -->
-              
-              <!-- /.row -->
 
-            
-                <!-- accepted payments column -->
-            
-                <!-- /.col -->
-               
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
+                    <!-- /.row -->
 
-              <!-- this row will not appear when printing -->
-              
+                    <!-- Table row -->
+
+                    <!-- /.row -->
+
+
+                    <!-- accepted payments column -->
+
+                    <!-- /.col -->
+
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- this row will not appear when printing -->
+
             </div>
             <!-- /.invoice -->
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
 
-    {% endblock %}
+{% endblock %}
