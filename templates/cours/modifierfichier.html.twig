@@ -1,42 +1,36 @@
-{% extends 'base.html.twig' %}
-{% block content%}
-   <section class="content-header">
-      <div class="container-fluid">
+{% extends 'base.html.twig' %} {% block content%}
+<section class="content-header">
+    <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Modifier fichier Cours</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Cours</li>
-            </ol>
-          </div>
+            <div class="col-sm-6">
+                <h1>Modifier fichier Cours</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Cours</li>
+                </ol>
+            </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
+    </div>
+    <!-- /.container-fluid -->
+</section>
 
-    <section class="content">
-      <div class="container-fluid">
+<section class="content">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
-            <div class="callout callout-info">
-              <h5><i class="fas fa-info"></i> Note:</h5>
-             Cours.
+            <div class="col-12">
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3">
+                    <span>{{ message }}</span> {% form_theme form 'bootstrap_4_layout.html.twig' %} {{ form_start(form) }} {{ form_widget(form) }} {{ form_end(form) }}
+                </div>
+                <!-- /.invoice -->
             </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
 
-
-            <!-- Main content -->
-            <div class="invoice p-3 mb-3">
-            <span>{{ message }}</span>
-             {{ form_start(form) }}
-              {{ form_widget(form) }}
-              {{ form_end(form) }}
-            </div>
-            <!-- /.invoice -->
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-
-    {% endblock %}
+{% endblock %}

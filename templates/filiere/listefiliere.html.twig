@@ -1,79 +1,80 @@
-{% extends 'base.html.twig' %}
-{% block content%}
-   <section class="content-header">
-      <div class="container-fluid">
+{% extends 'base.html.twig' %} {% block content%}
+<section class="content-header">
+    <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Liste Filieres</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Liste Filieres</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="callout callout-info">
-              <h5><i class="fas fa-info"></i> Note:</h5>
-              Gestion des Liste Filieres.
+            <div class="col-sm-6">
+                <h1>Liste Filieres ><span style="margin-left: 10%;"> <a  class="btn btn-info"  style="color: white;" href="{{ path ('filiere')}}"> Ajouter une Filiere </a></span</h1>
             </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Liste Filieres</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
 
 
-            <!-- Main content -->
-            <div class="invoice p-3 mb-3">
-              <!-- title row -->
-                     <h2>{{ lesfilieres|length }} Filieres</b></h2>
-            <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>CODE</th>
-                      <th>Nom complet</th>
-                      <th>#</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                   {% for filiere in lesfilieres %}
-                    <tr>
-                      <td>{{ filiere.id }}</td>
-                      <td>{{ filiere.designation }}</td>
-                       <td>{{ filiere.nom }}</td>
-                       <td> <a href="{{ path('modifierfiliere',{id:filiere.id}) }}">Edit </a> &nbsp; &nbsp; <a href="{{ path('supprimerfiliere',{id:filiere.id}) }}">Delete</a> </td>
-                    </tr> 
-                  {% endfor %}
-                  </tbody>
-                </table>     
-          
 
-              <!-- /.row -->
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3">
+                    <!-- title row -->
+                    <h2>{{ lesfilieres|length }} Filieres</b>
+                    </h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>CODE</th>
+                                <th>Nom complet</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for filiere in lesfilieres %}
+                            <tr>
+                                <td>{{ filiere.id }}</td>
+                                <td>{{ filiere.designation }}</td>
+                                <td>{{ filiere.nom }}</td>
+                                <td> <a href="{{ path('modifierfiliere',{id:filiere.id}) }}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button> </a> &nbsp; &nbsp; <a href="{{ path('supprimerfiliere',{id:filiere.id}) }}"><button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></a>                                    </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
 
-              <!-- Table row -->
-              
-              <!-- /.row -->
 
-            
-                <!-- accepted payments column -->
-            
-                <!-- /.col -->
-               
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
+                    <!-- /.row -->
 
-              <!-- this row will not appear when printing -->
-              
+                    <!-- Table row -->
+
+                    <!-- /.row -->
+
+
+                    <!-- accepted payments column -->
+
+                    <!-- /.col -->
+
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- this row will not appear when printing -->
+
             </div>
             <!-- /.invoice -->
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
 
-    {% endblock %}
+{% endblock %}

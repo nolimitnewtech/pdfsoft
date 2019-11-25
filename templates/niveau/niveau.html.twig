@@ -1,62 +1,60 @@
-{% extends 'base.html.twig' %}
-{% block content%}
-   <section class="content-header">
-      <div class="container-fluid">
+{% extends 'base.html.twig' %} {% block content%}
+<section class="content-header">
+    <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Niveaux</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Niveaux</li>
-            </ol>
-          </div>
+            <div class="col-sm-6">
+                <h1>Niveaux <span style="margin-left: 10%;"> <a class="btn btn-info" style="color: white;" href="{{ path ('listeniveau')}}"> Liste des niveaux </a></span></h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Niveaux</li>
+                </ol>
+            </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
+    </div>
+    <!-- /.container-fluid -->
+</section>
 
-    <section class="content">
-      <div class="container-fluid">
+<section class="content">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
-            <div class="callout callout-info">
-              <h5><i class="fas fa-info"></i> Note:</h5>
-              Gestion des Liste de Niveaux.
-            </div>
+            <div class="col-12">
 
 
-            <!-- Main content -->
-            <div class="invoice p-3 mb-3">
-              <!-- title row -->
-            
-  <span>{{ message }}</span>
-            {{ form_start(form) }}
-              {{ form_widget(form) }}
-              {{ form_end(form) }}
-              </div>
-              <!-- /.row -->
 
-              <!-- Table row -->
-              
-              <!-- /.row -->
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3">
+                    <!-- title row -->
+                    {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-            
+                    <span>{{ message }}</span> {{ form_start(form) }} {{ form_widget(form) }} {{ form_end(form) }}
+                </div>
+                <!-- /.row -->
+
+                <!-- Table row -->
+
+                <!-- /.row -->
+
+
                 <!-- accepted payments column -->
-            
-                <!-- /.col -->
-               
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
 
-              <!-- this row will not appear when printing -->
-              
+                <!-- /.col -->
+
+                <!-- /.col -->
             </div>
-            <!-- /.invoice -->
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
+            <!-- /.row -->
 
-    {% endblock %}
+            <!-- this row will not appear when printing -->
+
+        </div>
+        <!-- /.invoice -->
+    </div>
+    <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+{% endblock %}
