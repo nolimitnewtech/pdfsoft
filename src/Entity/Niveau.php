@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NiveauRepository")
@@ -18,6 +19,8 @@ class Niveau
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2,max=25)
+     * @Assert\NotBlank()
      */
     private $nom;
 

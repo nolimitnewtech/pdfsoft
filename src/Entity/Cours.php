@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CoursRepository")
@@ -18,21 +19,28 @@ class Cours
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     private $datepub;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2,max=255)
+     * @Assert\Valid()
      */
     private $lien;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2,max=30, minMessage="Le titre doit faire au moins {{ limit }} caractères.")
+     * @Assert\NotBlank()
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=255)
+     * @Assert\NotBlank()
      */
     
     private $description;

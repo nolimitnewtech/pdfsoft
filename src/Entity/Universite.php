@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UniversiteRepository")
@@ -18,6 +19,8 @@ class Universite
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=5,max=50)
+     * @Assert\NotBlank()
      */
     private $nom;
 
